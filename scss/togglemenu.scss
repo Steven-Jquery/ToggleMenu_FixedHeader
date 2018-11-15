@@ -1,0 +1,79 @@
+@import 'mixins';
+@import 'variable';
+
+.wrap-toggle-menu{
+	.wrap-header{
+		@include flexbox;
+		@include align-items(center);
+		@include justify-content(space-between);
+		background-color: $color-orange;
+		padding: 10px;
+		margin: 0 -10px;
+		font-size: 25px;
+		color: $color-white;
+		a{
+			color: $color-white;
+		}
+	}
+	.navigation{
+		.list-nav{
+			.item-nav{
+				border-bottom: 1px solid rgba($color-black, 0.2);
+				a{
+					display: block;
+					padding: 10px;
+					font-size: 16px;
+					color: $color-black;
+					@include flexbox;
+					@include align-items(center);
+					@include justify-content(space-between);
+					&:after{
+						@include arrow-light(6, 6, 1, rgba($color-black, 0.5), -45);
+					}
+				}
+				&:first-child{
+					@include flexbox;
+					@include align-items(center);
+					@include justify-content(space-between);
+					border-bottom: 1px solid rgba($color-orange, 0.8);
+					padding: 14px 0;
+					background-color: rgba($color-orange, 0.2);
+					a{
+						font-size: 20px;
+						padding: 0 10px;
+						&:after{
+							display: none;
+						}
+					}
+					.icon-closed{
+						font-size: 30px;
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+	}	
+}
+.content{
+	margin-top: 20px;
+	p{
+		margin-bottom: 30px;
+	}
+}
+@media (max-width: 767px){
+	.navigation{
+		background-color: $color-white;
+		position: fixed;
+		width: 80%;
+		height: 100%;
+		z-index: 10;
+		top: 0;
+		left: -100%;
+		overflow-x: hidden;
+		@include transition(all 0.5s);
+		@include box-shadow(0 3px 10px #4d4d4d);
+		&.open{
+			left: 0;
+		} 
+	}
+}
